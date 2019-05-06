@@ -26,7 +26,9 @@ socket.on(DEVICE_INTERFACE.DEVICES.COOKIE, function jar(data) {
   if (data[0].command == `action.devices.commands.LockUnlock`) {
     if (typeof data[0].challenge === `undefined`) {
       console.log(`No ack`);
-    } else {
+    } else if (data[0].challenge.pin !== PIN) {
+      console.log(`Wrong password`);
+    } else if (data[0].challenge.pin === PIN) {
       console.log(`Open here`);
       setTimeout(function pinChange() {
         rpio.write(COOKIE_PIN, rpio.LOW); // on: rpio.HIGH   off: rpio.LOW
