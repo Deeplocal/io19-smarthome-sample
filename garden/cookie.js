@@ -1,4 +1,4 @@
-const SERVER_IP = `https://bonsai-2002a.appspot.com`;
+const SERVER_IP = `<Provider_Endpoint>`;
 const socket = require(`socket.io-client`)(SERVER_IP);
 const ip = require(`quick-local-ip`);
 const rpio = require(`rpio`);
